@@ -125,6 +125,7 @@ public abstract class Pattern {
 				//the current target node creating edges
 				Node across2 = (Node) ioN2.next();
 				DefaultMutableTreeNode tacross2 = across2.getTreeNode();
+				System.out.println(across2);
 				TreeNode[] path2 = tacross2.getPath();
 				for (int i = 0; i < path2.length; i++) {
 					TreeNode k2 = path2[i];

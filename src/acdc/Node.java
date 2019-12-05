@@ -40,7 +40,7 @@ public class Node implements Comparable<Node>
 		incomingEdges = new ArrayList();
 		outgoingEdges = new ArrayList();
 	}
-    
+    // ---NEW CODE START---
     public boolean isCluster()
     {
 		if (type.equalsIgnoreCase("cModule") || type.equalsIgnoreCase("Subsystem") ||
@@ -50,7 +50,7 @@ public class Node implements Comparable<Node>
 		else 
 			return false;			
     }
-    
+    // ---NEW CODE END---
     public void print()
     {
 		IO.put("Node := " + name + ", Type := " + type,2);

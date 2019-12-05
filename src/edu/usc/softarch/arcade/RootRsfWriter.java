@@ -16,13 +16,12 @@ import java.util.stream.Collectors;
 
 import edu.usc.softarch.arcade.facts.driver.CSourceToDepsBuilder;
 import edu.usc.softarch.arcade.util.FileUtil;
-
+//---NEW CODE START---
 public class RootRsfWriter {
 	
 	public static void main(String[] args) throws IOException {
 		(new RootRsfWriter()).build(args);
 	}
-	
 	
 	public void build(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -49,12 +48,9 @@ public class RootRsfWriter {
 			}
 		}
 		
-		out.close();
-		
-		
+		out.close();	
 	}
-	
-	
-	
 
 }
+
+//---NEW CODE END---

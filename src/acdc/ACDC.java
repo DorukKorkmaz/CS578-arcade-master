@@ -123,10 +123,9 @@ public class ACDC
     
 	inputName = args[0]; 
     outputName = args[1];
+    // ---NEW CODE START---
     rootName = args[2];
-    System.out.println("Input name: " + inputName);
-    System.out.println("Output name: " + outputName);
-    System.out.println("Root name: " + rootName);
+    // ---NEW CODE END---
     
 	InputHandler input = null;
 	if(inputName.endsWith(".ta") || inputName.endsWith(".rsf"))
@@ -174,7 +173,7 @@ public class ACDC
 	// If it got to this line, we are dealing with at least two args
 	// Code executes for 2 or more arguments 
 
-	final String defaultPatterns = "bs";
+	final String defaultPatterns = "bso";
 	String selectedPatterns = null;
     boolean patternsSpecified = false;
     Pattern inducer = null;
@@ -279,8 +278,10 @@ public class ACDC
     IO.put("Patterns: " + selectedPatterns,1);
     IO.put("Cluster Size: " + maxClusterSize,1);
 
+    // ---NEW CODE START---
     // Populate the roots from the root file
     input.readRoot(rootName, root);
+    // ---NEW CODE END---
     
 	// Populate the tree from the input file   
     input.readInput(inputName, root);
@@ -321,7 +322,7 @@ public class ACDC
 	Vector allNodes = Pattern.allNodes(root);
 	Pattern.induceEdges(allNodes, root);
 
-//	// Execute the patterns
+	// Execute the patterns
     Iterator iv = vpatterns.iterator();
     while (iv.hasNext())
     {
@@ -333,8 +334,8 @@ public class ACDC
 	// Take care of any objects that were not clustered
 	Pattern c = new ClusterLast(root);
 	c.execute();
-	
-    // Create output file
+//	
+//    // Create output file
 	IO.put("Creating output...",1);
 	inducer.execute();
 	output.writeOutput(outputName, root);

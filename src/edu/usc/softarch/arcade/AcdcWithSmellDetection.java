@@ -65,12 +65,14 @@ public class AcdcWithSmellDetection {
 		if (!classesDirFile.exists())
 			return;
 		
+		// ---NEW CODE START---
 		// rootsRsfFilename is the file name of the roots
 		String rootsRsfFilename = outputDir.getAbsolutePath() + File.separatorChar + revisionNumber + "_roots.rsf";
 		String[] rootRsfWriterArgs = {absoluteClassesDir,rootsRsfFilename};
 		// find files with main, pipe and mkdir and add them to rsf
 		RootRsfWriter rootRsfWriter = new RootRsfWriter();
 		rootRsfWriter.build(rootRsfWriterArgs);
+		// ---NEW CODE END---
 		
 		// depsRsfFilename is the file name of the dependencies rsf file (one is created per subdirectory of dir)
 		String depsRsfFilename = outputDir.getAbsolutePath() + File.separatorChar + revisionNumber + "_deps.rsf";

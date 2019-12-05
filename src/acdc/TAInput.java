@@ -16,6 +16,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  * This class creates a tree from the info passed by the input file.
  */
 public class TAInput implements InputHandler {
+	// ---NEW CODE START---
 	public void readRoot(String rootStr, DefaultMutableTreeNode treeModel) {
 		IO.put("Reading root...", 1);
 		DefaultMutableTreeNode root = (DefaultMutableTreeNode) treeModel.getRoot();
@@ -25,14 +26,23 @@ public class TAInput implements InputHandler {
 			in = new BufferedReader(new FileReader(rootStr));
 			String str;
 			while((str = in.readLine()) != null) {
-				System.out.println(str);
-				str = str.trim();
-				Node n1 = new Node(str, "Security");
-				// IO.put("Node of unknown type: "+ secondTok);
-				DefaultMutableTreeNode tn1 = new DefaultMutableTreeNode(n1);
-				n1.setTreeNode(tn1);
-				// add it under root
-				root.add(tn1);
+				String format = str.substring(str.length()-2);
+				if(format.equals(".c")) {
+					
+					Node n1 = new Node(str+"-", "Security");
+					DefaultMutableTreeNode tn1 = new DefaultMutableTreeNode(n1);
+					n1.setTreeNode(tn1);
+					
+					Node n2 = new Node(str, "Unknown");
+					DefaultMutableTreeNode tn2 = new DefaultMutableTreeNode(n2);
+					n2.setTreeNode(tn2);
+					
+					tn1.add(tn2);
+					
+					// add it under root
+					root.add(tn1);
+				}
+
 			}
 			in.close();
 		} catch (IOException e1) {
@@ -40,6 +50,7 @@ public class TAInput implements InputHandler {
 			e1.printStackTrace();
 		}
 	}
+	// ---NEW CODE END---
 
 	public void readInput(String inputStr, DefaultMutableTreeNode treeModel) {
 		String str, firstTok, secondTok, thirdTok;
