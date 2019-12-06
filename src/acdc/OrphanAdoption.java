@@ -50,7 +50,7 @@ public class OrphanAdoption extends Pattern {
 		on = orphanNumber();
 		prevon = on + 1;
 		while (on < prevon) {
-			IO.put("Orphan Number: " + on, 1);
+			IO.put("Orphan Number: " + on, 2);
 			prevon = on;
 			vAdopted = oneRoundReverse();
 			vModified.addAll(vAdopted);
@@ -82,7 +82,7 @@ public class OrphanAdoption extends Pattern {
 				// Hashttable is replaced with LinkedHashMap
 				ht = new LinkedHashMap(10000);
 
-				IO.put("ROA:\torphan =: " + ncurr.getName(), 1);
+				IO.put("ROA:\torphan =: " + ncurr.getName(), 2);
 
 				// a set of the nodes to which the current orphan points to
 				// HashSet targets = ncurr.getTargets();
@@ -224,7 +224,7 @@ public class OrphanAdoption extends Pattern {
 				} // end while
 
 				if (ht.isEmpty())
-					IO.put("\tNOT\t adopted", 1);
+					IO.put("\tNOT\t adopted", 2);
 				// the hashtable now contains all the candidate nodes for adopting the orphan
 				// the node in the hashtable with the highest counter value will get the orphan
 				if (!ht.isEmpty()) {
@@ -282,7 +282,7 @@ public class OrphanAdoption extends Pattern {
 							vReturn.add((Node) ec.getUserObject());
 					}
 
-					IO.put("\twas adopted by ***\t" + max_key.getName(), 1);
+					IO.put("\twas adopted by ***\t" + max_key.getName(), 2);
 
 				}
 			} // end if
@@ -297,9 +297,9 @@ public class OrphanAdoption extends Pattern {
 		// Run oneRoundForward as many times as the #orphans is decreasing
 		do {
 			vAdopted = oneRoundForward();
-			IO.put("Before " + vAdopted.size(), 1);
+			IO.put("Before " + vAdopted.size(), 2);
 			result.addAll(vAdopted);
-			IO.put("After " + vAdopted.size() + "", 1);
+			IO.put("After " + vAdopted.size() + "", 2);
 		} while (vAdopted.size() > 0);
 		return result;
 	}
@@ -319,7 +319,7 @@ public class OrphanAdoption extends Pattern {
 			if (!ncurr.isCluster()) {
 				// begin with an empty hashtable for each orphan
 				ht = new LinkedHashMap(10000);
-				IO.put("OA:\torphan  =: " + ncurr.getName(), 1);
+				IO.put("OA:\torphan  =: " + ncurr.getName(), 2);
 
 				// sources = set of nodes which point to the current orphan
 				// HashSet sources = ncurr.getSources();
